@@ -1,0 +1,110 @@
+Buildfile: /Users/zach/CodingProjects/newAppInv/appinventor-sources/appinventor/build.xml
+
+all:
+
+init:
+
+MakeWarLibsDir:
+
+common_BlocksEditorHttpConstants:
+
+init:
+
+BlocksEditorHttpConstants:
+
+common_CommonUtils:
+
+init:
+
+CommonUtils:
+
+common_CommonVersion:
+
+init:
+
+CommonVersion:
+
+components_CommonConstants:
+
+init:
+
+CommonConstants:
+
+WarLibs:
+
+AiSharedLib:
+
+AiServerLib:
+
+components_JsonComponentDescription:
+
+init:
+
+CommonConstants:
+
+ComponentProcessingLib:
+
+HtmlEntities:
+
+common_CommonUtils:
+
+init:
+
+CommonUtils:
+
+AnnotationProcessors:
+
+common_CommonVersion:
+
+init:
+
+CommonVersion:
+
+AndroidRuntime:
+
+JsonComponentDescription:
+
+components_ComponentTranslation:
+
+init:
+
+CommonConstants:
+
+ComponentProcessingLib:
+
+HtmlEntities:
+
+common_CommonUtils:
+
+init:
+
+CommonUtils:
+
+AnnotationProcessors:
+
+common_CommonVersion:
+
+init:
+
+CommonVersion:
+
+AndroidRuntime:
+
+ComponentTranslation:
+
+AiClientLib:
+   [depend] Deleted 2 out of date files in 0 seconds
+    [javac] Compiling 16 source files to /Users/zach/CodingProjects/newAppInv/appinventor-sources/appinventor/appengine/build/war/WEB-INF/classes
+    [javac] /Users/zach/CodingProjects/newAppInv/appinventor-sources/appinventor/build/components/ComponentTranslation/src/com/google/appinventor/client/ComponentsTranslation.java:156: error: cannot find symbol
+    [javac]     map.put("PROPERTY-NodeName", MESSAGES.NodeNameProperties());
+    [javac]                                          ^
+    [javac]   symbol:   method NodeNameProperties()
+    [javac]   location: variable MESSAGES of type OdeMessages
+    [javac] /Users/zach/CodingProjects/newAppInv/appinventor-sources/appinventor/build/components/ComponentTranslation/src/com/google/appinventor/client/ComponentsTranslation.java:161: error: cannot find symbol
+    [javac]     map.put("EVENT-OnMessageReceived", MESSAGES.OnMessageReceivedEvents());
+    [javac]                                                ^
+    [javac]   symbol:   method OnMessageReceivedEvents()
+    [javac]   location: variable MESSAGES of type OdeMessages
+    [javac] Note: /Users/zach/CodingProjects/newAppInv/appinventor-sources/appinventor/appengine/src/com/google/appinventor/client/editor/youngandroid/BlocklyPanel.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 2 errors
