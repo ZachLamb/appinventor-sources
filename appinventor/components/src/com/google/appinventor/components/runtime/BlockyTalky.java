@@ -2,7 +2,7 @@
 // Copyright 2009-2011 Google, All Rights reserved
 // Copyright 2011-2012 MIT, All rights reserved
 // Released under the MIT License https://raw.github.com/mit-cml/app-inventor/master/mitlicense.txt
-
+// New Extension that I want to add.
 package com.google.appinventor.components.runtime;
 
 import com.google.appinventor.components.annotations.DesignerComponent;
@@ -82,6 +82,7 @@ import com.google.appinventor.components.runtime.collect.Lists;
                                     "android.permission.CHANGE_WIFI_MULTICAST_STATE, " +
                                     "android.permission.ACCESS_NETWORK_STATE, " +
                                     "android.permission.ACCESS_WIFI_STATE")
+
 @UsesLibraries(libraries = "java_websocket.jar")
 public class BlockyTalky extends AndroidNonvisibleComponent implements Component {
     private static String LOG_TAG = "BLOCKYTALKY";
