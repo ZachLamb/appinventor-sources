@@ -110,6 +110,7 @@
         <pathelement location="lib/twitter/twitter4j-media-support-3.0.5.jar" />
         <pathelement location="lib/QRGenerator/core.jar" />
         <pathelement location="lib/QRGenerator/javase.jar" />
+        <!-- added in websocket library to be used in BlockyTalky ext. -->
         <pathelement location="lib/java_websocket/java_websocket.jar" />
         <fileset dir="buildserver/lib" includes="**/*.jar"/>
         <!-- Apache Http Libraries -->
