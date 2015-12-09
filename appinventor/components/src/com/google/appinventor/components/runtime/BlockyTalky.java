@@ -19,89 +19,90 @@ import com.google.appinventor.components.common.PropertyTypeConstants;
 import com.google.appinventor.components.common.YaVersion;
 import com.google.appinventor.components.runtime.util.ErrorMessages;
 
-import android.app.Activity;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
+import com.google.appinventor.components.annotations.PropertyCategory;
 
-import java.io.File;
+import android.util.Log;
+import android.os.Handler;
+import android.os.Looper;
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.net.wifi.WifiManager;
+import android.net.DhcpInfo;
+import android.content.Context;
+
+import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.MulticastSocket;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.SocketAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.logging.LogRecord;
+import java.net.NetworkInterface;
+import java.util.Collections;
 import java.util.Date;
 
-/**
- * Camera provides access to the phone's camera
- *
- *
- */
+import org.apache.http.conn.util.InetAddressUtils;
+
+// import org.java_websocket.client.WebSocketClient;
+// import org.java_websocket.drafts.Draft;
+// import org.java_websocket.drafts.Draft_10;
+// import org.java_websocket.handshake.ServerHandshake;
+import org.json.JSONObject;
+import org.json.JSONException;
+
+import java.awt.dnd.DragGestureEvent;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.Exception;
+import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
+
+import java.net.InetAddress;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import com.google.appinventor.components.runtime.collect.Lists;
+
 @DesignerComponent(version = 2,
    description = "This is version 2 of BlockyTalky.",
    category = ComponentCategory.EXTENSION,
    nonVisible = true,
    iconName = "images/extension.png")
 @SimpleObject(external = true)
-@UsesPermissions(permissionNames = "android.permission.WRITE_EXTERNAL_STORAGE, android.permission.READ_EXTERNAL_STORAGE")
+@UsesPermissions(permissionNames = "android.permission.INTERNET, " +
+                                    "android.permission.CHANGE_WIFI_MULTICAST_STATE, " +
+                                    "android.permission.ACCESS_NETWORK_STATE, " +
+                                    "android.permission.ACCESS_WIFI_STATE")
 public class BlockyTalky extends AndroidNonvisibleComponent
     implements  Component {
-  private static final String CAMERA_OUTPUT = "output";
-  private final ComponentContainer container;
-  private Uri imageFile;
+    private static String LOG_TAG = "BLOCKYTALKY";
+    private final ComponentContainer container;
+    private String nodeName = "BlockyTalky";
 
   /* Used to identify the call to startActivityForResult. Will be passed back
   into the resultReturned() callback method. */
   private int requestCode;
-
-  // whether to open into the front-facing camera
-  private boolean useFront;
-
-  /**
-   * Creates a Camera component.
-   *
-   * Camera has a boolean option to request the forward-facing camera via an intent extra.
-   *
-   * @param container container, component will be placed in
-   */
   public BlockyTalky(ComponentContainer container) {
     super(container.$form());
     this.container = container;
   }
 
-  /**
-   * Returns true if the front-facing camera is to be used (when available)
-   *
-   * @return {@code true} indicates front-facing is to be used, {@code false} will open default
-   */
-  @SimpleProperty(
-    category = PropertyCategory.BEHAVIOR)
-  public boolean UseFront() {
-    return useFront;
-  }
+    @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING,
+            defaultValue = "BlockyTalky")
+    @SimpleProperty(description = "Name of message sender")
+    public void NodeName(String name) {
+      this.nodeName = name;
 
-  /**
-   * Specifies whether the front-facing camera should be used (when available)
-   *
-   * @param front
-   *          {@code true} for front-facing camera, {@code false} for default
-   */
-  @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_BOOLEAN, defaultValue = "False")
-  @SimpleProperty(description = "Specifies whether the front-facing camera should be used (when available). "
-    + "If the device does not have a front-facing camera, this option will be ignored "
-    + "and the camera will open normally.")
-  public void UseFront(boolean front) {
-    useFront = front;
-  }
-
-  /**
-   * Takes a picture, then raises the AfterPicture event.
-   * If useFront is true, adds an extra to the intent that requests the front-facing camera.
-   */
+    }
   @SimpleFunction
   public void doSomething() {
     Log.i("CameraComponent", "Yasssss");
   }
-  // @SimpleEvent
-  // public void AfterPicture(String image) {
-  //   Log.i("CameraComponent", "Deleted file "
-  // }
 }
