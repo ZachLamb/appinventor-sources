@@ -84,7 +84,11 @@ public class BlockyTalky extends AndroidNonvisibleComponent
     implements  Component {
     private static String LOG_TAG = "BLOCKYTALKY";
     private final ComponentContainer container;
-    private String nodeName = "BlockyTalky";
+    private String nodeName = "NameOfNode";
+	private int itemTextColor;
+	private int itemBackgroundColor;
+	public final static int DEFAULT_ITEM_TEXT_COLOR = Component.COLOR_GREEN;
+	public final static int DEFAULT_ITEM_BACKGROUND_COLOR = Component.COLOR_BLACK;
 
   /* Used to identify the call to startActivityForResult. Will be passed back
   into the resultReturned() callback method. */
@@ -93,16 +97,22 @@ public class BlockyTalky extends AndroidNonvisibleComponent
     super(container.$form());
     this.container = container;
   }
-
+  	// property 
     @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING,
-            defaultValue = "BlockyTalky")
+            defaultValue = "BlockyTalky",)
     @SimpleProperty(description = "Name of message sender")
     public void NodeName(String name) {
-      this.nodeName = name;
+      
 
     }
+   // purple/first block
   @SimpleFunction
   public void doSomething() {
+    Log.i("CameraComponent", "Yasssss");
+  }
+  // dark green block
+  @SimpleFunction
+  public void sendMessage(String name,String name2) {
     Log.i("CameraComponent", "Yasssss");
   }
 }
