@@ -99,20 +99,28 @@ public class BlockyTalky extends AndroidNonvisibleComponent
   }
   	// property 
     @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING,
-            defaultValue = "BlockyTalky",)
+            defaultValue = "BlockyTalky")
     @SimpleProperty(description = "Name of message sender")
     public void NodeName(String name) {
-      
-
+      // this.name = name;
     }
-   // purple/first block
+  @SimpleFunction(description = "Sends a message to a BlockyTalky")
+    public void SendMessage(String message, String destination) {
+        Log.i("CameraComponent", "Yasssss");
+    }
+
+   // return nearby BlockyTalky's
+  @SimpleProperty(description = "Will return BlockyTalkys nearby.")
   @SimpleFunction
-  public void doSomething() {
-    Log.i("CameraComponent", "Yasssss");
-  }
-  // dark green block
-  @SimpleFunction
-  public void sendMessage(String name,String name2) {
-    Log.i("CameraComponent", "Yasssss");
+  public List<String> nearbyBlockyTalkies(String btName) {
+    List<String> nearby = new ArrayList<String>();
+    nearby.add("Everything");
+    nearby.add("Is");
+    nearby.add("Awesome");
+    //the lines commented out will add the nearby nodes based on key-value pairs from localBT
+    // for(String key : localBTs.keySet()){
+    //         localBTNames.add(key);
+    //     }
+   return nearby;
   }
 }
