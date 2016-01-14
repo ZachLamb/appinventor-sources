@@ -69,7 +69,7 @@ import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
 import com.google.appinventor.components.runtime.collect.Lists;
-
+import RandomNameGenerator;
 @DesignerComponent(version = 2,
    description = "This is version 2 of BlockyTalky.",
    category = ComponentCategory.EXTENSION,
@@ -84,7 +84,7 @@ public class BlockyTalky extends AndroidNonvisibleComponent
     implements  Component {
     private static String LOG_TAG = "BLOCKYTALKY";
     private final ComponentContainer container;
-    private String nodeName = "NameOfNode";
+    private String nodeName = "null";
 	private int itemTextColor;
 	private int itemBackgroundColor;
 	public final static int DEFAULT_ITEM_TEXT_COLOR = Component.COLOR_GREEN;
@@ -102,11 +102,9 @@ public class BlockyTalky extends AndroidNonvisibleComponent
             defaultValue = "")
     @SimpleProperty(description = "Name of message sender")
     public void NodeName(String name) {
-      if(name == null){
-        String[] names = {"Bob", "Jill", "Tom", "Brandon"};
-        int index = (int)(Math.random()) * names.length;
-        name = names[index];
-        System.out.println(name);
+      if(name == "null"){
+        RandomNameGenerator random = new GenerateRandomName();
+        name = random;
       }
       else{
       	Log.i("CameraComponent", "Yasssss");
