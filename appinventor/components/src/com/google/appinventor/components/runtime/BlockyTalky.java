@@ -69,7 +69,7 @@ import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
 import com.google.appinventor.components.runtime.collect.Lists;
-import RandomNameGenerator;
+import com.google.appinventor.components.runtime.RandomNameGenerator;
 @DesignerComponent(version = 2,
    description = "This is version 2 of BlockyTalky.",
    category = ComponentCategory.EXTENSION,
@@ -83,6 +83,7 @@ import RandomNameGenerator;
 public class BlockyTalky extends AndroidNonvisibleComponent
     implements  Component {
     private static String LOG_TAG = "BLOCKYTALKY";
+    //
     private final ComponentContainer container;
     private String nodeName = "null";
 	private int itemTextColor;
@@ -92,8 +93,12 @@ public class BlockyTalky extends AndroidNonvisibleComponent
 
   /* Used to identify the call to startActivityForResult. Will be passed back
   into the resultReturned() callback method. */
+
+
+  sendMessage()
   private int requestCode;
-  public BlockyTalky(ComponentContainer container) {
+  public BlockyTalky(ComponentContainer container) 
+  {
     super(container.$form());
     this.container = container;
   }
@@ -101,32 +106,48 @@ public class BlockyTalky extends AndroidNonvisibleComponent
     @DesignerProperty(editorType = PropertyTypeConstants.PROPERTY_TYPE_STRING,
             defaultValue = "")
     @SimpleProperty(description = "Name of message sender")
-    public void NodeName(String name) {
-      if(name == "null"){
-        RandomNameGenerator random = new GenerateRandomName();
-        name = random;
+    public void NodeName(String name) 
+    {
+      if(name == "null")
+      {
+        RandomNameGenerator random = new RandomNameGenerator();
+        name = random.GenerateRandomName();
       }
-      else{
-      	Log.i("CameraComponent", "Yasssss");
+      else
+      {
+      	Log.i("BlockyTalky", "There's already a name");
       }
     }
   @SimpleFunction(description = "Sends a message to a BlockyTalky")
-    public void SendMessage(String message, String destination) {
-        Log.i("CameraComponent", "Yasssss");
+    public void SendMessage(String message, String destination) 
+    {
+        Log.i("BlockyTalky", "I'm sending a message to" + destination);
+        //check network connectivity
+        if(nearbyBlockyTalkies().contains(destination)){
+        	//send message
+
+        }
+        else{
+        	//what do I do now?
+        	return null
+        }
+
     }
 
    // return nearby BlockyTalky's
   // @SimpleProperty(description = "Will return BlockyTalkys nearby.")
   @SimpleFunction
-  public List<String> nearbyBlockyTalkies() {
-    List<String> nearby = new ArrayList<String>();
-      nearby.add("Everything");
-      nearby.add("Is");
-      nearby.add("Awesome");
-    //the lines commented out will add the nearby nodes based on key-value pairs from localBT
-    // for(String key : localBTs.keySet()){
-    //         localBTNames.add(key);
-    //     }
-   return nearby;
+  public List<String> nearbyBlockyTalkies() 
+  {
+    List<String> nearbyBTs = new ArrayList<String>();
+      nearbyBTs.add("Everything");
+    for(String key : localBTs.keySet()){
+            nearbyBTs.add(key);
+        }
+   return nearbyBTs;
   }
+}
+public class AnnnouncementBroadcaster
+{
+  
 }
